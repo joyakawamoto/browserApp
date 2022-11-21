@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
+    
+    @State var isWebView:Bool = false
+     
+     var body: some View {
+         
+         Button(action:{
+             isWebView = true
+         }){
+             Text("シートで表示")
+         }.sheet(isPresented: $isWebView){
+             BrowserView()
+         }
+     }
 }
 
 struct ContentView_Previews: PreviewProvider {
